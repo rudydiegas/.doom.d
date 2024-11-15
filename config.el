@@ -23,11 +23,14 @@
 (map! :leader
       :desc "Toggle theme brightness"
       "z" #'toggle-theme)
+(map! :leader
+      :desc "Open a new vterm"
+      "m" #'multi-vterm)
 
 
 
 ;; verilog setup
-(after! verilog-mode
+(use-package verilog-mode
   :config
   ;; "I prefer 2 space tabs, so all the defaults have to go."
   (setq verilog-indent-level              2
@@ -52,8 +55,8 @@
 
 ;; (add-hook 'verilog-mode-hook #'lsp-mode)
 
-(after! verilog-ext-mode
-  (add-hook 'verilog-mode-hook #'verilog-ext-mode)
+(use-package verilog-ext
+  :hook ('verilog-mode-hook . 'verilog-ext-mode)
   :config
   (setq verilog-ext-feature-list
      '(font-lock
@@ -133,11 +136,6 @@
             "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
             "⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
             "⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"))
-            ;; "⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-            ;; "⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-            ;; "⠀⠀⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-            ;; "⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-            ;; "⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"))
          (longest-line (apply #'max (mapcar #'length banner))))
     (put-text-property
      (point)
