@@ -6,15 +6,22 @@
 (setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Fira Code" :size 13))
 
-(setq doom-theme 'moe-dark)
+(setq doom-theme 'moe-light)
 (custom-set-faces!
-  `(font-lock-comment-face :foreground "#496b52"))
+        `(font-lock-comment-face :foreground "#c685cf")
+        `(font-lock-comment-delimiter-face :foreground "#d4a2db")
+        `(default :background "#ffffd7"))
 
 (setq display-line-numbers-type 'relative)
 
 (setq show-paren-style 'expression)
-(setq +doom-dashboard-ascii-banner-fn #'draw-laptop-girl-banner)
+(setq +doom-dashboard-ascii-banner-fn #'draw-kiki-cat-banner)
 (blink-cursor-mode)
+
+
+
+(add-hook 'c-mode-hook (lambda () (flycheck-mode -1)))
+(add-hook 'c-mode-hook (lambda () (lsp-mode -1)))
 
 
 
