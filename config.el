@@ -6,12 +6,6 @@
 (setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Fira Code" :size 13))
 
-(setq doom-theme 'moe-light)
-(custom-set-faces!
-        `(font-lock-comment-face :foreground "#c685cf")
-        `(font-lock-comment-delimiter-face :foreground "#d4a2db")
-        `(default :background "#ffffd7"))
-
 (setq display-line-numbers-type 'relative)
 
 (setq show-paren-style 'expression)
@@ -33,8 +27,32 @@
 (map! :leader
       :desc "Open a new vterm"
       "m" #'multi-vterm)
+(map! :n "C-k" #'evil-scroll-up)
+(map! :n "C-j" #'evil-scroll-down)
+
+;; change this later
+(map! :leader
+      :desc "Search a project"
+      "l" #'+vertico/project-search)
 
 
+
+;; moe-theme configuration
+(use-package! moe-theme
+  :commands (moe-dark
+             moe-light)
+  :config
+
+        ;; light
+  (setq moe-light-bg "#fdfdd7"
+        moe-light-comment "#c685cf"
+        moe-light-comment-delimiter "#d4a2db"
+
+        ;; dark
+        moe-dark-comment "#496b52"
+        moe-dark-comment-delimiter "#62906e"))
+
+(moe-light)
 
 ;; verilog setup
 (use-package verilog-mode
@@ -97,18 +115,10 @@
   (interactive)
   (if (eq doom-theme 'moe-dark)
     (progn
-      (load-theme 'moe-light)
-      (custom-set-faces!
-        `(font-lock-comment-face :foreground "#c685cf")
-        `(font-lock-comment-delimiter-face :foreground "#d4a2db")
-        `(default :background "#ffffd7"))
+      (moe-light)
       (setq +doom-dashboard-ascii-banner-fn #'draw-kiki-cat-banner))
     (progn
-      (load-theme 'moe-dark)
-      (custom-set-faces!
-        `(font-lock-comment-face :foreground "#496b52")
-        `(font-lock-comment-delimiter-face :foreground "#62906e")
-        `(default :background "#303030"))
+      (moe-dark)
       (setq +doom-dashboard-ascii-banner-fn #'draw-laptop-girl-banner)))
   (+doom-dashboard-reload-maybe-h))
 

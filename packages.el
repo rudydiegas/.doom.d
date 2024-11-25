@@ -50,7 +50,7 @@
 ;; (unpin! t)
 ;;
 
-(package! multi-vterm)
 (package! moe-theme)
+(package! multi-vterm)
 (package! verilog-mode)
 (package! verilog-ext)
