@@ -16,6 +16,7 @@
 
 (add-hook 'c-mode-hook (lambda () (flycheck-mode -1)))
 (add-hook 'c-mode-hook (lambda () (lsp-mode -1)))
+(advice-add 'smartparens-mode :override #'ignore)
 
 
 
@@ -66,6 +67,9 @@
         verilog-indent-begin-after-if     2
         verilog-case-indent               2
         verilog-indent-declaration-macros 2
+
+        verilog-auto-newline nil
+        verilog-auto-indent-on-newline nil
 
         ;; "This is 0 to prevent automatic indentation after declaring `default_nettype none"
         verilog-cexp-indent              2
