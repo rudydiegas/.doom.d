@@ -51,6 +51,7 @@
 ;;
 
 (package! moe-theme)
+(package! seoul256-theme)
 (package! multi-vterm)
 (package! verilog-mode)
 (package! verilog-ext)

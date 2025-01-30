@@ -3,17 +3,12 @@
 
 
 ;; visuals
-(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Fira Code" :size 13))
-
+(blink-cursor-mode)
 (setq display-line-numbers-type 'relative)
-
 (setq show-paren-style 'expression)
 (setq +doom-dashboard-ascii-banner-fn #'draw-kiki-cat-banner)
-(blink-cursor-mode)
-
-(global-whitespace-mode +1)
 (setq whitespace-style '(face trailing))
+(global-whitespace-mode +1)
 
 
 
@@ -25,9 +20,8 @@
 
 ;; keybindings
 (map! :n "TAB" #'+fold/toggle)
-(map! :leader
-      :desc "Toggle theme brightness"
-      "z" #'toggle-theme)
+(map! :n "C-n" #'toggle-theme
+      :desc "Toggle theme brightness")
 (map! :leader
       :desc "Open a new vterm"
       "m" #'multi-vterm)
@@ -42,21 +36,31 @@
 
 
 ;; moe-theme configuration
-(use-package! moe-theme
-  :commands (moe-dark
-             moe-light)
+;; (use-package! moe-theme
+;;   :commands (moe-dark
+;;              moe-light)
+;;   :config
+;;
+;;         ;; light
+;;   (setq moe-light-bg "#fdfdd7"
+;;         moe-light-comment "#c685cf"
+;;         moe-light-comment-delimiter "#d4a2db"
+;;
+;;         ;; dark
+;;         moe-dark-comment "#496b52"
+;;         moe-dark-comment-delimiter "#62906e"))
+;;
+;; (moe-light)
+
+
+
+(use-package! seoul256-theme
   :config
+  (setq seoul256-background 252)
+  (load-theme 'seoul256 t))
+(setq doom-theme 'seoul256)
 
-        ;; light
-  (setq moe-light-bg "#fdfdd7"
-        moe-light-comment "#c685cf"
-        moe-light-comment-delimiter "#d4a2db"
 
-        ;; dark
-        moe-dark-comment "#496b52"
-        moe-dark-comment-delimiter "#62906e"))
-
-(moe-light)
 
 ;; verilog setup
 (use-package verilog-mode
@@ -80,12 +84,12 @@
         verilog-auto-lineup              '(all)
 
         verilog-ext-formatter-column-limit 80
+        verilog-ext-formatter-wrap-spaces 2
+        verilog-ext-formatter-indentation-spaces 2
         verilog-ext-formatter-over-column-limit-penalty 80
         verilog-ext-formatter-line-break-penalty 1000)
-  (add-hook 'verilog-mode-hook #'rainbow-delimiters-mode))
-
-
 ;; (add-hook 'verilog-mode-hook #'lsp-mode)
+  (add-hook 'verilog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package verilog-ext
   :hook ('verilog-mode-hook . 'verilog-ext-mode)
@@ -118,15 +122,27 @@
 
 
 ;; theme toggling between moe light and dark
+;; (defun toggle-theme ()
+;;   (interactive)
+;;   (if (eq doom-theme 'moe-dark)
+;;     (progn
+;;       (moe-light)
+;;       (setq +doom-dashboard-ascii-banner-fn #'draw-kiki-cat-banner))
+;;     (progn
+;;       (moe-dark)
+;;       (setq +doom-dashboard-ascii-banner-fn #'draw-laptop-girl-banner)))
+;;   (+doom-dashboard-reload-maybe-h))
+
 (defun toggle-theme ()
   (interactive)
-  (if (eq doom-theme 'moe-dark)
+  (if (eq seoul256-background 252)
     (progn
-      (moe-light)
-      (setq +doom-dashboard-ascii-banner-fn #'draw-kiki-cat-banner))
+      (setq seoul256-background 236)
+      (setq +doom-dashboard-ascii-banner-fn #'draw-laptop-girl-banner))
     (progn
-      (moe-dark)
-      (setq +doom-dashboard-ascii-banner-fn #'draw-laptop-girl-banner)))
+      (setq seoul256-background 252)
+      (setq +doom-dashboard-ascii-banner-fn #'draw-kiki-cat-banner)))
+  (load-theme 'seoul256 t)
   (+doom-dashboard-reload-maybe-h))
 
 
