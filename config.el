@@ -90,6 +90,9 @@
         verilog-ext-formatter-over-column-limit-penalty 80
         verilog-ext-formatter-line-break-penalty 1000)
 ;; (add-hook 'verilog-mode-hook #'lsp-mode)
+  (add-hook 'verilog-mode-hook
+    (lambda ()
+      (define-key verilog-mode-map ";" nil)))
   (add-hook 'verilog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package verilog-ext
@@ -174,6 +177,7 @@
 [PACKAGES]
 \\usepackage[dvipsnames,svgnames]{xcolor}
 \\usepackage[sfdefault]{AlegreyaSans}
+\\usepackage{graphicx}
 \\usepackage{newtxsf}
 \\definecolor{DarkRed}{RGB}{204,36,29}
 \\definecolor{ForestGreen}{RGB}{184,187,38}
