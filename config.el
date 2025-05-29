@@ -125,6 +125,20 @@
 
 
 
+;; scala-mode setup
+(use-package scala-mode
+  :config
+  (setq scala-indent:step 2))
+
+
+
+;; lsp-haskell setup
+(use-package lsp-haskell
+  :config
+  (setq lsp-haskell-plugin-stan-global-on :json-false))
+
+
+
 ;; theme toggling between moe light and dark
 ;; (defun toggle-theme ()
 ;;   (interactive)
