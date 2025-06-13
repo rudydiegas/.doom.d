@@ -166,7 +166,7 @@
       (apheleia-formatters-indent nil "--indent"))
      (zig-fmt "zig" "fmt" "--stdin")))
  '(custom-safe-themes
-   '("935cdfc778539529d8124a5500923a660b7e05eb9dba5a762107c7db7a4d56ae" "8d412c0ed46b865312d6df5c1dfd1821d349dd3cba00049cf88c4ad34403597e" "9f986dcc0de26c1c8b6dfd749eb7351b1a3c8db31b3330a7dfdd25be1b47cb22" "4edad12267c88bb57aab5a5c0d2e23740c6f552b6a36fb785dfb4e4725808eab" default))
+   '("4087b7c860c3759b1f389dbf396d96b52df9d176d2c56901f174218eb713d59b" "935cdfc778539529d8124a5500923a660b7e05eb9dba5a762107c7db7a4d56ae" "8d412c0ed46b865312d6df5c1dfd1821d349dd3cba00049cf88c4ad34403597e" "9f986dcc0de26c1c8b6dfd749eb7351b1a3c8db31b3330a7dfdd25be1b47cb22" "4edad12267c88bb57aab5a5c0d2e23740c6f552b6a36fb785dfb4e4725808eab" default))
  '(package-selected-packages '(moe-theme))
  '(warning-suppress-types '((initialization) (defvaralias) (lexical-binding))))
 (custom-set-faces
